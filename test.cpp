@@ -16,6 +16,38 @@ vector<string> split(const string &);
  */
 
 long getWays(int n, vector<long> c) {
+    
+
+    int i, j, x, y; 
+  
+    // We need n+1 rows as the table  
+    // is constructed in bottom up 
+    // manner using the base case 0 
+    // value case (n = 0) 
+    long table[n + 1][c.size()]; 
+      
+    // Fill the enteries for 0 
+    // value case (n = 0) 
+    for (i = 0; i < c.size(); i++) 
+        table[0][i] = 1; 
+  
+    // Fill rest of the table entries  
+    // in bottom up manner  
+    for (i = 1; i < n + 1; i++) 
+    { 
+        for (j = 0; j < c.size(); j++) 
+        { 
+            // Count of solutions including S[j] 
+            x = (i-c[j] >= 0) ? table[i - c[j]][j] : 0; 
+  
+            // Count of solutions excluding S[j] 
+            y = (j >= 1) ? table[i][j - 1] : 0; 
+  
+            // total count 
+            table[i][j] = x + y; 
+        } 
+    } 
+    return table[n][c.size() - 1]; 
 
 }
 
