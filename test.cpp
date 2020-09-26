@@ -2,61 +2,81 @@
 
 using namespace std;
 
+// Complete the minimumNumber function below.
+int minimumNumber(int n, string password) {
+    // Return the minimum number of characters to make the password strong
+   string numbers = "0123456789",lower_case = "abcdefghijklmnopqrstuvwxyz",
+    upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    special_characters = "!@#$%^&*()-+";
+     
+    bool num ,upper,lower,special =false;
+    int count =4;
+    for (int i=0;i<n;i++)
+    {    
+       if(!num)
+       {
+         size_t pos = numbers.find(password[i]);
+         if(pos !=string::npos)
+           {
+               num =true;
+               count--;
+           }
+       }
+       if(!upper)
+       {
+         
+         if(isupper(password[i]))
+           {
+               upper =true;
+               count--;
+           }
+       }
+       if(!lower)
+       {
+         
+         if(islower(password[i]))
+           {
+               lower =true;
+               count--;
+           }
+       }
+       if(!special)
+       {
+         size_t pos =  special_characters.find(password[i]);
+         if(pos !=string::npos)
+           {
+               special =true;
+               count--;
+           }
+       }
+    }
+
+    if((n+count)<6){
+
+       return (6-n);
+    }
+    else
+    return count;
+    
+    
+}
 
 int main()
 {
-  int T,N,ele;
 
-  cin>>T;
-  while(T!=0){
-      cin>>N;
-      if(N==1){
-          cout<<"YES"<<endl;
-          T--;
-          break;
 
-      }
-    bool flag=false;
-    vector<int>arr;
-      for(int i=0;i<N;i++)
-      {  
-         cin>>ele;
-         arr.push_back(ele);
+    int n;
+    cin >> n;
 
-      }
-      for(int i=1;i<N;i++)
-      {  
-         
-         if(abs(arr[i]-arr[i-1]<=1))
-         {
-             if(arr[i]>arr[i-1])
-             {
-               arr.erase(arr.begin(),i-1);
-             }
-            
-             else
-             {
-                  arr.erase(arr.begin(),i);
-             }
-             
 
-         }
-         else
-         {
-             flag=false;
-             break;
-         }
-         
-      }
+    string password;
+    cin>>password;
 
-      if(flag)
-      {
-          cout<<"YES"<<endl;
+    int answer = minimumNumber(n, password);
 
-      }
-      else{
-          cout<<"NO"<<endl;
-      }
-     T--;
-  }
+    cout << answer << "\n";
+
+   
+
+    return 0;
 }
