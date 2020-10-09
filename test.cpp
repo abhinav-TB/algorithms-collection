@@ -4,8 +4,10 @@
 using namespace std;
 
 int main() {
-int n= 100000;
-cout<<n;
+int n= NULL;
+int w=3;
+bool t=w>n;
+cout<<t;
 }
 
 // 90
