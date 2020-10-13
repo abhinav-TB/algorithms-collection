@@ -15,7 +15,7 @@ int main()
         bool flag= false;
         cin>>n;
         cin>>k;
-        vector<unsigned> arr(100000000);
+        vector<unsigned> arr;
         for(int i=0;i<n;i++)
         {
             cin>>temp;

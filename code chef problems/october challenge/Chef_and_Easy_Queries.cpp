@@ -1,10 +1,11 @@
 # include <bits/stdc++.h>
 using namespace std;
+#define ll long long 
 
 int main()
 {
-    unsigned  k,temp;
-    unsigned T,n;
+    ll  k,temp;
+    ll T,n;
     
  
 
@@ -12,28 +13,33 @@ int main()
     
     while(T--)
     {
-        bool flag= false;
+        ll index=0,sum=0;
         cin>>n;
         cin>>k;
-        vector<unsigned> arr(100000000);
+        vector<ll> arr;
         for(int i=0;i<n;i++)
         {
+            int temp;
             cin>>temp;
-            arr[i]=temp;
-        }
-        for(int i=0;flag==false;i++)
-        {
-           if(arr[i]>=k)
-            {
-               arr[i+1]=arr[i+1]+arr[i]-k;
-            }
-            else
-            {
-                cout<<i+1<<endl;
-                flag=true;
+            arr.push_back(temp);
         
+        }
+        for(int i=0;i<n;i++)
+        {  
+           sum+=arr[i]-k;
+           if(sum<0)
+            {
+               index=i;
+               break;
             }
         }
+        if(index!=0){
+            cout<<index+1<<endl;
+        }
+        else{
+            cout<<n+(sum/k)+1<<endl;
+        }
+
             
             
 
