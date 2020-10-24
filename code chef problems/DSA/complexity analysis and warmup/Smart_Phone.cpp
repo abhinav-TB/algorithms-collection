@@ -12,26 +12,22 @@ int main(){
     vector<ll> arr;
     vector<ll> max_rev;
     while(N--){
-      int a;
+      ll a;
       cin>>a;
       arr.push_back(a);
 
     }
 
     sort(arr.begin(),arr.end());
-    int flag=0;
-    for(int i=0;i<arr.size();i++){
-        if(arr[i]==arr[i-1]){
-          max_rev.push_back(arr[i]*((arr.size())-flag));
-        }
-        else{
-          max_rev.push_back(arr[i]*((arr.size())-i));
-          flag==i;
-        }
+  
+    for(ll i=0;i<arr.size();i++){
+    
+          max_rev.push_back(arr[i]*(arr.size()-i));
+    
         
     }
 
-    int ans=*max_element(max_rev.begin(),max_rev.end());
+    ll ans=*max_element(max_rev.begin(),max_rev.end());
     cout<<ans<<endl;
 
 }
