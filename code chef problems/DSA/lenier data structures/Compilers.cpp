@@ -9,23 +9,21 @@ int main(){
     while(t--){
         string s;
         cin>>s;
-        ll count1=0,count2=0,ans=0;
+        ll count=0,ans=0;
+        
         for(ll i=0;i<s.length();i++){
-          if(s[i]=='<'){
-              count1++;
-              count2=0;
-
-          }
-          else if(s[i]=='>'){
-              count2++;
-              if(count1==count2){
-                 ans=count1*2;
-                 count1=count2=0;
-              }
-              else if(s[i+1]!='>'){
-                  count1=0;
-              }
-          }
+             if(s[i]=='>'){
+                 count--;
+             }
+             else{
+                 count++;
+             }
+             if(count==0){
+                 ans=max(i+1,ans);
+             }
+             if(count<0){
+                 break;
+             }
         }
         cout<<ans<<endl;
     }
