@@ -1,29 +1,44 @@
-
 #include <bits/stdc++.h>
-using namespace std;
-#define mod 1000000007
 
-int main()
-{
-long n,k,i;
-cin>>n>>k;
-long a[n];
-for(i=0;i<n;i++)
-cin>>a[i];
-long ff=1;
-stack<int> st;
-st.push(n-1);
-for(i=n-2;i>=0;i--)
-{
-while(!st.empty() && a[i]<=a[st.top()])
-st.pop();
-if(!st.empty())
-{
-int i2=st.top();
-int i1=i;
-ff=((ff%mod)*((i2%mod)-(i1%mod)+1))%mod;
+using namespace std;
+
+#define ar array
+#define ll long long
+
+const int MAX_N = 1e5 + 1;
+const int MOD = 1e9 + 7;
+const int INF = 1e9;
+const ll LINF = 1e18;
+
+
+
+void solve() {
+  ll n,k,p=1;
+  cin>>n>>k;
+  ll arr[n];
+  stack<ll> s;
+  for(ll i=0;i<n;i++){
+      cin>>arr[i];
+  }
+  for(ll i=n-1;i>=0;i--){
+
+     while(!s.empty()&& arr[i]<=arr[s.top()]){
+         s.pop();
+    
+     }
+     if(!s.empty()){
+        p=(p%MOD*(s.top()-i+1)%MOD)%MOD;
+     }
+
+     s.push(i);
+  }
+  cout<<p<<endl;
 }
-st.push(i);
-}
-cout<<ff<<endl;
-}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+        solve();
+    }
