@@ -13,26 +13,15 @@ const ll LINF = 1e18;
 
 
 void solve() {
-   string a,b,a0,b0,a1,b1;
-   int ans=0;
-   cin>>a>>b;
-   for(int i=0;i<a.length();i+=2){
-       if(a[i]!=b[i]){
-           while(a[i]!=b[i]&&i<a.length()){
-              i+=2;
-           }
-           ans++;
-       }
-   }
-   for(int i=1;i<a.length();i+=2){
-       if(a[i]!=b[i]){
-           while(a[i]!=b[i]&&i<a.length()){
-              i+=2;
-           }
-           ans++;
-       }
-   }
-   cout<<ans<<endl;
+  ll k,q;
+  vector<ll>moti(k),satis(k);
+  for(int i=0;i<k;i++){
+      cin>>moti[k];
+  }
+  for (int i = 0; i < k; i++){
+      cin >> satis[k];
+  }
+  
 }
 
 int main() {

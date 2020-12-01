@@ -21,11 +21,7 @@ void solve() {
         prime.push_back(i);
     }
  }
- for(int i=0;i<k;i++){
-    total+=prime[i];
- }
- cout<<total<<endl;
-}
+ 
 
 
 int main() {
@@ -39,4 +35,5 @@ int main() {
         // cout << "Case #" << t  << ": ";
         solve();
     }
+    return 0
 }
