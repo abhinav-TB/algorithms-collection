@@ -13,18 +13,26 @@ const ll LINF = 1e18;
 
 
 void solve() {
-  ll k,q;
-  vector<ll>moti(k),satis(k);
-  for(int i=0;i<k;i++){
-      cin>>moti[k];
+  ll a,b,o1=0,o2=0,e1=0,e2=0;
+  cin>>a>>b;
+  ll ans=0;
+  if(a%2==0){
+    o1=e1=a/2;
   }
-  for (int i = 0; i < k; i++){
-      cin >> satis[k];
-  }                                                                                                                                                                                                                                                                 
-  sort(moti.begin(),moti.end());
-  sort(satis.begin(),satis.end());
-
+  else{
+    o1=(a/2)+1;
+    e1=a-o1;
+  }
+  if(b%2==0){
+    o2=e2=b/2;
+  }
+  else{
+    o2=(b/2)+1;
+    e2=b-o2;
+  }
   
+
+  cout<<(e1*e2)+(o1*o2)<<endl;
 }
 
 int main() {

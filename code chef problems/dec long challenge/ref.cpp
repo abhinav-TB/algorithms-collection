@@ -13,18 +13,7 @@ const ll LINF = 1e18;
 
 
 void solve() {
-  ll k,q;
-  vector<ll>moti(k),satis(k);
-  for(int i=0;i<k;i++){
-      cin>>moti[k];
-  }
-  for (int i = 0; i < k; i++){
-      cin >> satis[k];
-  }                                                                                                                                                                                                                                                                 
-  sort(moti.begin(),moti.end());
-  sort(satis.begin(),satis.end());
 
-  
 }
 
 int main() {

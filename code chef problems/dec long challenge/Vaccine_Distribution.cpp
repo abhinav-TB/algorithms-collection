@@ -13,18 +13,35 @@ const ll LINF = 1e18;
 
 
 void solve() {
-  ll k,q;
-  vector<ll>moti(k),satis(k);
-  for(int i=0;i<k;i++){
-      cin>>moti[k];
-  }
-  for (int i = 0; i < k; i++){
-      cin >> satis[k];
-  }                                                                                                                                                                                                                                                                 
-  sort(moti.begin(),moti.end());
-  sort(satis.begin(),satis.end());
-
+   ll n,d,risk=0,count=0;
+   cin>>n>>d;
+   for(int i=0;i<n;i++){
+       int ele;
+       cin>>ele;
+       if(ele>=80||ele<=9){
+        risk++;
+       }
+   }
+   if(d==1){
+       count=n;
+   }
+   else{
+      if(risk%d==0){
+       count+=risk/d;
+       }
+      else{
+       count+=((risk/d)+1);
+       }
+      if((n-risk)%d==0){
+       count+=((n-risk)/d);
+       }
+       else{
+       count=count+((n-risk)/d)+1;
+       }
+   }
   
+   cout<<count<<endl;
+
 }
 
 int main() {
