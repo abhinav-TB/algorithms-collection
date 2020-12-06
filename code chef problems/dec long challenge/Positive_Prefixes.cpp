@@ -13,11 +13,11 @@ const ll LINF = 1e18;
 
 
 void solve() {
-  int n,k,flag=1;
+  int n,k;
   ll sum=0;
   cin>>n>>k;
   vector<int>arr(n+1);
-  int r=n%2==0?1:1;
+  int r=n%2==0?-1:1;
   for(int i=1;i<=n;i++){
       if(i%2==0){
         arr[i]=i*r;
@@ -38,13 +38,17 @@ void solve() {
 if(count>k){
   int i=n-1;
   while(count!=k){
-    arr[i]*=-1;
-    count--;
-    i-=2;
+    if(arr[i]>0){
+       arr[i]*=-1;
+       count--;
+       
+    }
+    i--;
+   
   }
 }
 if(count<k){
-  for(int i=1;i<=n&&count!=k;i++){
+  for(int i=n;i>=0&&count!=k;i--){
     if(arr[i]<0){
       arr[i]*=-1;
       count++;
