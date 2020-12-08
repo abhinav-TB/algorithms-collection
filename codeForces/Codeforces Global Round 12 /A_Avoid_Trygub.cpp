@@ -15,11 +15,10 @@ const ll LINF = 1e18;
 void solve() {
   int n;
   string s;
-  cin>>n;
-  cin>>s;
-  for(char &c:s){
-      
-  }
+  cin>>n>>s;
+  sort(s.begin(),s.end());
+  cout<<s;
+  cout<<endl;
 }
 
 int main() {
