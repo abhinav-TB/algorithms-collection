@@ -4,6 +4,7 @@ using namespace std;
 
 #define ar array
 #define ll long long
+template <class T>
 
 const int MAX_N = 1e5 + 1;
 const int MOD = 1e9 + 7;
@@ -11,26 +12,18 @@ const int INF = 1e9;
 const ll LINF = 1e18;
 
 
+class base { 
+	int arr[10]; 
+}; 
 
-void solve() {
-  int n;
-  string s;
-  cin>>n;
-  cin>>s;
-  for(char &c:s){
-      
-  }
-}
+class b1: public base { }; 
 
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
+class b2: public base { }; 
 
-    int tc; cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t  << ": ";
-        solve();
-    }
-}
+class derived: public b1, public b2 {}; 
+
+int main() 
+{ 
+cout << sizeof(derived); 
+return 0; 
+} 
