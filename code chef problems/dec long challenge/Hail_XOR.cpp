@@ -1,37 +1,74 @@
-#include <bits/stdc++.h>
 
+
+#include<bits/stdc++.h>
 using namespace std;
 
-#define ar array
-#define ll long long
+int main()
+{
+    int t;
+    cin >> t;
 
-const int MAX_N = 1e5 + 1;
-const int MOD = 1e9 + 7;
-const int INF = 1e9;
-const ll LINF = 1e18;
+    while(t--)
+    {
+        long long int n, x,z;
+        cin >> n >> x;
+
+        long long int a[1000000];
+
+        for(long long int i = 0; i < n; i++)
+        {
+            cin >> a[i];
+        }
+
+        long long int i = 0;
+
+        for(long long int k = x; k > 0 && i < n-1; k--)
+        {
+            bool flag = 0;
+            long long int p = log(a[i])/log(2);
+            long long int r = 1 << p;
+            a[i] = a[i] ^ r;
+
+            for(long long int j = i + 1; j < n; j++)
+            {
+                if((a[j] ^ r) < a[j])
+                {
+                    a[j] = a[j] ^ r;
+                    flag = 1;
+                    break;
+                }
+            }
+
+            if(flag == 0)
+            {
+                a[n - 1] = a[n - 1] ^ r;
+            }
+
+            while(a[i] <= 0)
+            {
+                i++;
+            }
+
+          z = k + 1;
+        }
+
+            if(z > 0)
+            {
+                if((n < 3) && (z % 2 > 0) ) 
+                {
+                    a[n - 1] = a[n - 1] ^ 1;
+                    a[n - 2] = a[n - 2] ^ 1;
+                }
+            }
 
 
+        
 
-void solve() {
-ll n,x;
-cin>>n>>x;
-vector<ll>v(n+1);
-for(auto &x:v){
-    cin>>x;
-}
+        for(long long int i = 0; i < n; i++)
+        {
+            cout << a[i] << " ";
+        }
 
-
-}
-
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-
-    int tc; cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t  << ": ";
-        solve();
+        cout << endl;
     }
 }
