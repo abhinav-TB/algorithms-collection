@@ -1,7 +1,3 @@
 {
-    "files.associations": {
-        "ostream": "cpp"
-    },
-    "vscode-neovim.useWSL": true,
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
+    "python.pythonPath": "/usr/bin/python3"
 }
