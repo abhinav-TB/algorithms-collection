@@ -1,63 +1,54 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-#define ar array
-#define ll long long
+typedef long long ll;
 
-const int MAX_N = 1e5 + 1;
-const int MOD = 1e9 + 7;
-const int INF = 1e9;
-const ll LINF = 1e18;
-
-
-
-void solve() {
-
-    int n ,k;
-   
-    cin>>n>>k;
-
-    vector<int>v(n);
-
-    for(int i = 0; i < n; i++){
-
-       cin>>v[i];
-
+ll kadane(int arr[], int n){
+    ll currSum = 0, maxSum = INT_MIN;
+    for(int i=0; i<n; i++){
+        currSum+=arr[i];
+        maxSum = max(maxSum, currSum);
+        if(currSum<0) currSum = 0;
     }
-
-    // case 1 sum of the array is negative ans will be the sum of that array
-
-    // case 2 sum of the array is possitive the ans wilbe the sum of the entire array k times
-
-    // case 3 
-    int max_till_now=v[0],curr_max=v[0];
-
-    for(int i = 1; i < n; i++){
-
-        curr_max = max(v[i],curr_max+v[i]);
-
-        max_till_now=max(curr_max,max_till_now);
-        
-    }
-
-    cout<<max_till_now*k<<endl;;
-
-
-  
-
-
+    return maxSum;
 }
 
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-
-    int tc; cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t  << ": ";
-        solve();
+ll maxSubarraySum(int arr[], int n, int k){
+    ll kadanes_sum = kadane(arr, n);
+    if(k==1) return kadanes_sum;
+    ll currPrefixSum = 0, currSuffixSum = 0;
+    ll maxPrefixSum = INT_MIN, maxSuffixSum = INT_MIN;
+    for(int i=0; i<n;i++){
+        currPrefixSum+=arr[i];
+        maxPrefixSum = max(maxPrefixSum, currPrefixSum);
     }
+    ll totalSum = currPrefixSum;
+    for(int i=n-1;i>=0; i--){
+        currSuffixSum+=arr[i];
+        maxSuffixSum = max(maxSuffixSum, currSuffixSum);
+    }
+    ll ans;
+    if(totalSum<0) ans = max(maxSuffixSum+maxPrefixSum, kadanes_sum);
+    else ans = max(maxPrefixSum+maxSuffixSum+(k-2)*totalSum, kadanes_sum);
+    return ans;
+}
+
+int main()
+{
+ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    int t;
+    cin>>t;
+
+    while(t--){
+        int n, k;
+        cin>>n>>k;
+        int arr[n];
+        for(int i=0; i<n; i++) cin>>arr[i];
+
+        cout<<maxSubarraySum(arr, n, k)<<endl;
+    }
+
+    return 0;
 }
