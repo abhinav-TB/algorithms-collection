@@ -11,7 +11,24 @@ const int INF = 1e9;
 const ll LINF = 1e18;
 
 
+
 void solve() {
+int b , g, k;
+
+cin >> b >> g >> k;
+
+vector<pair<int , int>> p(k+1) ;
+
+for ( int i = 0 ; i < b ;i++) {
+
+    cin >> p[i].first;
+}
+for ( int i = 0 ; i < g ;i++) {
+
+    cin >> p[i].second;
+}
+
+
 
 }
 
