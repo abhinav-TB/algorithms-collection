@@ -15,6 +15,7 @@ const ll LINF = 1e18;
 void solve() {
     
     int n , ans = 0 ;
+    cin >> n;
     vector<int> w(n) , l(n);
     
     for(auto &a : w) {
@@ -24,23 +25,33 @@ void solve() {
     for(auto &a :l) {
         cin >> a;
     }
-
-    if( n == 2) {
-        
-       if(w[0] > w[1]) {
-           if(l[0] == 1) {
-               ans +=2;
-           }
-       }
-    } 
-
-    else if ( n == 3) {
-        if( w[0] > w[1]) {
-            if(w[0] > w[2]) {
-                ans += l[1]+2;
-            }
-        }
+    vector<int> pos(n);
+    for(int i = 0 ; i < n; i++) {
+        pos[i] = i ;
     }
+     
+    vector<int> sorted(w.begin() , w.end());
+
+    sort(sorted.begin() , sorted.end());
+
+    for(int i = 1 ; i <= n-1; i++) {
+
+        int index = find(w.begin() , w.end() , sorted[i]) - w.begin();
+
+        int p = pos[find(w.begin() , w.end() , sorted[i - 1]) - w.begin()];
+
+        int ref = index;
+
+        while(ref <= p) {
+
+            ref += l[index];
+            pos[index] = ref;
+            ans++;
+
+        }
+
+    }
+    cout << ans <<endl;
 }
 
 int main() {
