@@ -1,0 +1,17 @@
+class Solution:
+    def numSplits(self, s: str) -> int:
+        ans = 0
+        lfreq = Counter()
+        rfreq = Counter(s)
+        
+        for c in s:
+            rfreq[c] -= 1
+            lfreq[c] += 1
+            
+            if rfreq[c] == 0:
+                del rfreq[c]
+            if len(rfreq) == len(lfreq):
+                ans += 1
+            
+        return ans   
+       
